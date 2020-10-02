@@ -26,19 +26,19 @@ const InscriptionPage = () => {
     <Layout>
       <div className="form">
         <div>
-          <label for="name">Prénom</label>
+          <label htmlFor="name">Prénom</label>
           <input type="name" />
         </div>
         <div>
           <div>
-            <label for="number">Numéro de téléphone</label>
+            <label htmlFor="number">Numéro de téléphone</label>
             <input type="number" />
           </div>
-          <label for="name">Email</label>
+          <label htmlFor="name">Email</label>
           <input type="name" />
         </div>
         <div>
-          <label for="firstname">Password</label>
+          <label htmlFor="firstname">Password</label>
           <input type="firstname" />
         </div>
         <div>
