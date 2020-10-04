@@ -28,11 +28,12 @@
 }
 
 .title {
-  margin: 0;
   line-height: 1.15;
   font-size: 4rem;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 14rem;
 }
 
 .grid {
