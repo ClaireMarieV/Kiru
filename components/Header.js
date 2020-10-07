@@ -18,28 +18,35 @@ const Header = () => (
           </li>
         </ul>
       </div>
-      <div className="connect">
-        <Link href="/inscription">
-          <a>
-            <span>Inscription</span>
-          </a>
-        </Link>
-        <Link href="/connection">
-          <a>
-            <span>Connection</span>
-          </a>
-        </Link>
+      <Link href="/">
+        <div className="logo">
+          <img src="/logo/kiruLavenderBold1.png" />
+        </div>
+      </Link>
+      <div className="ul">
+        <ul>
+          <li>
+            <Link href="/inscription">
+              <a>Inscription</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/connection">
+              <a>Connection</a>
+            </Link>
+          </li>
+        </ul>
       </div>
     </nav>
 
     <style jsx>{`
       nav {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         text-decoration: none;
         margin-top: 2rem 0 0 0;
       }
-      nav > .ul > ul {
+      nav .ul > ul {
         list-style: none;
         display: flex;
         justify-self: flex-start;
@@ -47,19 +54,12 @@ const Header = () => (
       nav > .ul > ul > li {
         padding: 0 0.5rem 0.5rem 1rem;
       }
-      nav > .ul > ul > li > a {
-        font-family: arboria, sans-serif;
-        font-weight: 500;
-        font-style: normal;
-        letter-spacing: 0.25em;
+      .logo {
+        width: 5rem;
+        justify-self: center;
       }
-      nav .connect {
-        display: flex;
-        justify-self: flex-end;
-        align-self: center;
-      }
-      .connect a > span {
-        padding: 1rem;
+      .logo img {
+        width: 100%;
       }
 
       @media (max-width: 1076px) {
