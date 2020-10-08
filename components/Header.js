@@ -20,7 +20,7 @@ const Header = () => (
       </div>
       <Link href="/">
         <div className="logo">
-          <img src="/logo/kiruLavenderBold1.png" />
+          <img src="/logo/kiruGeometrique.png" />
         </div>
       </Link>
       <div className="ul">
