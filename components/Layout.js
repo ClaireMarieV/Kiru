@@ -55,14 +55,18 @@ const Layout = ({ children }) => (
           overflow: hidden;
         }
         a {
+          font-family: arboria, sans-serif;
+          font-weight: 500;
+          font-style: normal;
+          letter-spacing: 0.25em;
           text-decoration: none;
           color: #40363e;
         }
         h1 {
-          font-family: semplicitapro, sans-serif;
-          font-weight: 700;
-          font-style: italic;
-          color: #563440;
+          font-family: arbotek, sans-serif;
+          font-weight: 300;
+          font-style: normal;
+          letter-spacing: 1rem;
           margin: 0;
         }
 
