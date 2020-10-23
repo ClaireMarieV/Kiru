@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Cookies from "js-cookie";
+import Container from "../components/Container";
+import Link from "next/link";
 
 const ConnectPage = () => {
   const [email, setEmail] = useState("");
@@ -30,8 +32,10 @@ const ConnectPage = () => {
 
   return (
     <Layout>
-      <div className="container">
+      <Container>
         <div className="form">
+          <h2>CONNECTEZ-VOUS</h2>
+
           <div>
             <label htmlFor="email">Email</label>
             <input
@@ -48,20 +52,25 @@ const ConnectPage = () => {
               onChange={(event) => setPassword(event.target.value)}
             />
           </div>
+          <div className="button">
+            <button onClick={connect}>Se connecter</button>
+          </div>
         </div>
-        <div className="button">
-          <button onClick={connect}>Bienvenue</button>
+        <div>
+          <h2>INSCRIVEZ-VOUS</h2>
+          <div className="button">
+            <Link href="/inscription">
+              <a>
+                <button>Créer un compte</button>
+              </a>
+            </Link>
+          </div>
         </div>
-      </div>
+      </Container>
       <style jsx>{`
-        .container {
-          width: 44rem;
-          margin: auto;
-        }
         .form {
-          display: grid;
+          display: flex;
           flex-direction: column;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
         .form div {
           display: flex;

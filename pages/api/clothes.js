@@ -2,19 +2,16 @@
 const db = require("../../lib/db");
 
 export default async (req, res) => {
-  await db.newClothe({ name: "dresses", price: "50" });
-  await db.newUser({
-    name: "Archo",
-    email: "poulos@gmail.com",
-    password: "absdefghijk",
-  });
-  await db.newUser({
-    name: "Marc",
-    firstname: "Pesto",
-    address: "50 bis Roma street",
-    country: "Roma",
-    number: "0622665526",
-  });
-  res.statusCode = 200;
-  res.json({ name: "John Doe" });
+  if (req.method === "POST") {
+    const body = JSON.parse(req.body);
+    await db.newClothe({
+      name: body.name,
+      description: body.description,
+      matter: body.matter,
+      price: body.price,
+    });
+
+    res.statusCode = 200;
+    res.end();
+  }
 };

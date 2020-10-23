@@ -30,6 +30,7 @@ const InscriptionPage = () => {
     <Layout>
       <div className="container">
         <div className="form">
+          <h2>INSCRIVEZ-VOUS</h2>
           <div>
             <label htmlFor="lastname">Nom</label>
             <input
