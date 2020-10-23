@@ -26,11 +26,6 @@ const Header = () => (
       <div className="ul">
         <ul>
           <li>
-            <Link href="/inscription">
-              <a>Inscription</a>
-            </Link>
-          </li>
-          <li>
             <Link href="/connection">
               <a>Connection</a>
             </Link>
@@ -62,7 +57,7 @@ const Header = () => (
         width: 100%;
       }
 
-      @media (max-width: 1076px) {
+      @media (max-width: 730px) {
         nav {
           grid-template-rows: repeat(2, minmax(0, 1fr));
         }
