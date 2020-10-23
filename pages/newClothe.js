@@ -3,22 +3,26 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 
 const EditPage = () => {
+  const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [matter, setMatter] = useState("");
   const [price, setPrice] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const onChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   const edit = () => {
     setLoading(true);
     setError(null);
     fetch("/api/clothes", {
       method: "post",
-      body: JSON.stringify({ name, description, price, matter }),
+      body: JSON.stringify({ name, description, price, matter, image }),
     })
       .then(() => {
-        window.location = "/editClothes";
+        window.location = "/newClothe";
       })
       .catch((error) => {
         setError(error);
@@ -30,6 +34,23 @@ const EditPage = () => {
     <Layout>
       <Container>
         <div className="form">
+          <label for="image">Upload Image</label>
+          <input
+            type="file"
+            id="image"
+            onChange={(event) => {
+              const file = event.target.files[0];
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = function () {
+                setImage(reader.result);
+              };
+              reader.onerror = function (error) {
+                console.log("Error: ", error);
+              };
+            }}
+          />
+
           <label htmlFor="name">Nom</label>
           <input
             type="text"
