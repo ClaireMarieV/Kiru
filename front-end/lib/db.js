@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 //INITIALISATION
 const clotheSchema = new mongoose.Schema({
+  image: String,
+  alt: String,
   name: String,
   description: String,
   matter: String,
@@ -50,17 +52,34 @@ exports.newClothe = async (clothe) => {
     console.error(error);
   }
 };
-exports.getClothe = async (name, price) => {
+exports.getClothes = async () => {
   try {
     const db = await getDb();
-    const user = await User.findOne({
-      name,
-      description,
-      matter,
-      price,
-    }).exec();
+    const clothes = await Clothe.find().exec();
     await db.close();
-    return user;
+    return clothes;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+//EXPORTS HOUSE
+exports.newObject = async (object) => {
+  try {
+    const db = await getDb();
+    const objectEntity = new Object(object);
+    await objectEntity.save();
+    await db.close();
+  } catch (error) {
+    console.error(error);
+  }
+};
+exports.geObjects = async () => {
+  try {
+    const db = await getDb();
+    const objects = await Object.find().exec();
+    await db.close();
+    return objects;
   } catch (error) {
     console.error(error);
   }

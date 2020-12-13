@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../components/Layout";
-import Container from "../components/Container";
+import Layout from "../../components/Layout";
+import Container from "../../components/Container";
 
 const ListingPage = () => {
   // const [name, setName] = useState("");
@@ -30,7 +30,13 @@ const ListingPage = () => {
     <Layout>
       <Container>
         {clothes.map((clothe) => (
-          <div>{clothe.name}</div>
+          <>
+            <div>{clothe.name}</div>
+            <div>{clothe.price}</div>
+            <div>
+              <img src={clothe.image} />
+            </div>
+          </>
         ))}
       </Container>
       <style jsx>{`

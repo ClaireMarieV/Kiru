@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Layout from "../components/Layout";
-import Container from "../components/Container";
+import Layout from "../../components/Layout";
+import Container from "../../components/Container";
 
 const EditPage = () => {
   const [image, setImage] = useState("");
@@ -19,7 +19,7 @@ const EditPage = () => {
     setError(null);
     fetch("/api/clothes", {
       method: "post",
-      body: JSON.stringify({ name, description, price, matter, image }),
+      body: JSON.stringify({ image, name, description, price, matter }),
     })
       .then(() => {
         window.location = "/newClothe";
@@ -76,7 +76,7 @@ const EditPage = () => {
             onChange={(event) => setPrice(event.target.value)}
           />
           <div className="button">
-            <button onClick={edit}>Bienvenue</button>
+            <button onClick={edit}>Added</button>
           </div>
         </div>
       </Container>

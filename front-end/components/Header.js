@@ -7,7 +7,7 @@ const Header = () => (
       <div className="ul">
         <ul>
           <li>
-            <Link href="">
+            <Link href="/listingClothes">
               <a>VETEMENTS</a>
             </Link>
           </li>
@@ -20,7 +20,7 @@ const Header = () => (
       </div>
       <Link href="/">
         <div className="logo">
-          <img src="/logo/kiruGeometrique.png" />
+          <img src="/logo/kiru.svg" />
         </div>
       </Link>
       <div className="ul">
@@ -50,6 +50,7 @@ const Header = () => (
         padding: 0 0.5rem 0.5rem 1rem;
       }
       .logo {
+        visibility: hidden;
         width: 5rem;
         justify-self: center;
       }
