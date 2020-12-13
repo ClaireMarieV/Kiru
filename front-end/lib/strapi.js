@@ -1,2 +1,4 @@
 exports.getClothes = () =>
-  fetch("http://localhost:1337/clothes").then((response) => response.json());
+  fetch(process.env.NEXT_PUBLIC_STRAPI_URL + "/clothes").then((response) =>
+    response.json()
+  );

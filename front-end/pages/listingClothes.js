@@ -40,7 +40,7 @@ const ListingPage = () => {
                 className="img"
                 picture={{
                   picture:
-                    "http://localhost:1337" +
+                    process.env.NEXT_PUBLIC_STRAPI_URL +
                     clothe.pictures[0].formats.small.url,
                 }}
               />
