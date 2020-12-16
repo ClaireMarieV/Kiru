@@ -1,9 +1,10 @@
 const strapi = require("../../lib/strapi");
 
 export default async (req, res) => {
+  const body = JSON.parse(req.body);
   const customers = {
-    identifier: "va.mcx@gmail.com",
-    password: "AbCdE1234",
+    identifier: body.email,
+    password: body.password,
   };
 
   const request = {
@@ -13,8 +14,15 @@ export default async (req, res) => {
       "Content-Type": "application/json",
     },
   };
+  if (customers) {
+    const jwt = fetch("http://localhost:1337/auth/local", request)
+      .then((res) => res.json())
+      .then((response) => res.end(JSON.stringify(response)));
 
-  fetch("http://localhost:1337/auth/local", request)
-    .then((res) => res.json())
-    .then((response) => res.end(JSON.stringify(response)));
+    res.statusCode = 200;
+    res.end(JSON.stringify({ jwt }));
+  } else {
+    res.statusCode = 401;
+    res.end();
+  }
 };

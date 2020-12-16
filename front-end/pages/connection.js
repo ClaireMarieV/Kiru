@@ -7,13 +7,13 @@ import Link from "next/link";
 const ConnectPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [erro, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const connect = () => {
     setLoading(true);
     setError(null);
-    fetch("/api/login", {
+    fetch("/api/auth", {
       method: "post",
       body: JSON.stringify({ email, password }),
     })
