@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Picture from "../components/Picture";
@@ -18,8 +19,8 @@ const ListingPage = () => {
     fetch("/api/clothes")
       .then((response) => response.json())
       .then((clothes) => {
-        setLoading(false);
         setClothes(clothes);
+        setLoading(false);
       })
       .catch((error) => {
         setError(error);
@@ -33,32 +34,32 @@ const ListingPage = () => {
         {clothes
           .filter((clothe) => clothe.pictures.length)
           .map((clothe) => (
-            <>
-              <div>{clothe.name}</div>
-              <div>{clothe.price}</div>
-              <Picture
-                className="img"
-                picture={{
-                  picture:
-                    process.env.NEXT_PUBLIC_STRAPI_URL +
-                    clothe.pictures[0].formats.small.url,
-                }}
-              />
-            </>
+            <Link href={"/vetements/" + clothe.id}>
+              <a>
+                <div>{clothe.name}</div>
+                <div className="img">
+                  <Picture
+                    picture={{
+                      picture:
+                        process.env.NEXT_PUBLIC_STRAPI_URL +
+                        clothe.pictures[0].formats.small.url,
+                    }}
+                  />
+                </div>
+                <div>{clothe.price}</div>
+              </a>
+            </Link>
           ))}
       </Container>
       <style jsx>{`
-        .form {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-gap: 1rem;
-          align-self: center;
-          justify-self: center;
-        }
         .img {
-          flex-direction: column;
-          display: flex;
           width: 100%;
+          height: 100%;
+          display: flex;
+        }
+
+        a {
+          justify-self: center;
         }
       `}</style>
     </Layout>

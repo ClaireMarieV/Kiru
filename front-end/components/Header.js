@@ -4,10 +4,17 @@ import Link from "next/link";
 const Header = () => (
   <header>
     <nav>
+      <Link href="/">
+        <a>
+          <div className="logo">
+            <img src="/logo/kiru.svg" />
+          </div>
+        </a>
+      </Link>
       <div className="ul">
         <ul>
           <li>
-            <Link href="/listingClothes">
+            <Link href="/vetements">
               <a>VETEMENTS</a>
             </Link>
           </li>
@@ -16,15 +23,7 @@ const Header = () => (
               <a>MAISON</a>
             </Link>
           </li>
-        </ul>
-      </div>
-      <Link href="/">
-        <div className="logo">
-          <img src="/logo/kiru.svg" />
-        </div>
-      </Link>
-      <div className="ul">
-        <ul>
+
           <li>
             <Link href="/connection">
               <a>Connection</a>
@@ -37,22 +36,25 @@ const Header = () => (
     <style jsx>{`
       nav {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         text-decoration: none;
         margin-top: 2rem 0 0 0;
+        border-bottom: 1px solid;
+        padding: 1.5rem;
       }
       nav .ul > ul {
         list-style: none;
         display: flex;
-        justify-self: flex-start;
+        justify-content: flex-end;
+      }
+      .nav {
+        border-left: 1px solid;
       }
       nav > .ul > ul > li {
         padding: 0 0.5rem 0.5rem 1rem;
       }
       .logo {
-        visibility: hidden;
         width: 5rem;
-        justify-self: center;
       }
       .logo img {
         width: 100%;
