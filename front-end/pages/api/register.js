@@ -1,18 +1,30 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-const db = require("../../lib/db");
+const strapi = require("../../lib/strapi");
 
 export default async (req, res) => {
-  if (req.method === "POST") {
-    const body = JSON.parse(req.body);
-    await db.newUser({
-      lastname: body.lastname,
-      firstname: body.firstname,
-      email: body.email,
-      password: body.password,
-      number: body.number,
-    });
+  const body = JSON.parse(req.body);
+  const customers = {
+    username: body.lastname + body.firstname,
+    email: body.email,
+    password: body.password,
+  };
 
-    res.statusCode = 200;
+  const request = {
+    method: "POST",
+    body: JSON.stringify(customers),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  if (customers) {
+    const jwt = fetch("http://localhost:1337/auth/local/register", request)
+      .then((res) => res.json())
+      .then((response) => res.end(JSON.stringify(response)))
+      .catch((error) => {
+        // Handle error.
+        console.log("An error occurred:", error.response);
+      });
+  } else {
+    res.statusCode = 401;
     res.end();
   }
 };

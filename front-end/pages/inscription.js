@@ -4,7 +4,6 @@ import Layout from "../components/Layout";
 const InscriptionPage = () => {
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
-  const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -15,8 +14,12 @@ const InscriptionPage = () => {
     setError(null);
     fetch("/api/register", {
       method: "post",
-      body: JSON.stringify({ lastname, firstname, email, password, number }),
+      body: JSON.stringify({ lastname, firstname, email, password }),
     })
+      .then((response) => response.json())
+      .then(({ jwt }) => {
+        Cookies.set("jwt", jwt);
+      })
       .then(() => {
         window.location = "/";
       })
@@ -45,14 +48,6 @@ const InscriptionPage = () => {
               type="text"
               value={firstname}
               onChange={(event) => setFirstname(event.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="number">Numéro de téléphone</label>
-            <input
-              type="text"
-              value={number}
-              onChange={(event) => setNumber(event.target.value)}
             />
           </div>
           <div>
