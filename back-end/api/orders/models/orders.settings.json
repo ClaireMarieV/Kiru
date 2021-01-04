@@ -11,13 +11,13 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "users_permissions_user": {
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "orders"
-    },
     "clothes": {
       "collection": "clothes"
+    },
+    "customer": {
+      "via": "orders",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }

@@ -15,12 +15,11 @@ export default async (req, res) => {
     },
   };
   if (customers) {
-    const jwt = fetch("http://localhost:1337/auth/local", request)
+    fetch("http://localhost:1337/auth/local", request)
       .then((res) => res.json())
       .then((response) => res.end(JSON.stringify(response)));
 
     res.statusCode = 200;
-    res.end(JSON.stringify({ jwt }));
   } else {
     res.statusCode = 401;
     res.end();
